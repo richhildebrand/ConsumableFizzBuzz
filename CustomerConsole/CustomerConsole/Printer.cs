@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CustomerConsole.CustomerRules;
 using FizzBuzzLib;
 
 namespace CustomerConsole
@@ -11,13 +12,14 @@ namespace CustomerConsole
 
         public static void Main(string[] args)
         {
-            var rules = new List<Rule>();
+            var rules = new List<IRule>();
             rules.Add(new Rule(3, "Fizz"));
             rules.Add(new Rule(5, "Buzz"));
+            rules.Add(new NonStandardCustomerRule());
 
             _fizzBuzz = new FizzBuzz(rules);
             //PrintFizzBuzzUpTo(Int32.MaxValue);
-            PrintFizzBuzzUpTo(100);
+            PrintFizzBuzzUpTo(46);
 
             Console.ReadKey();
         }

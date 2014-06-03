@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace FizzBuzzLib
 {
-    public class Rule
+    public class Rule : IRule
     {
         private readonly int _denominator;
         private readonly string _result;

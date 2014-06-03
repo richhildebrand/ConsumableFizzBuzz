@@ -6,9 +6,9 @@ namespace FizzBuzzLib
 {
     public class FizzBuzz
     {
-        private List<Rule> _rules;
+        private List<IRule> _rules;
 
-        public FizzBuzz(List<Rule> rules)
+        public FizzBuzz(List<IRule> rules)
         {
             _rules = rules;
         }
@@ -25,7 +25,7 @@ namespace FizzBuzzLib
             return GetNumberOrSentence(sentence, number);
         }
 
-        private string ApplyRule(Rule rule, int number)
+        private string ApplyRule(IRule rule, int number)
         {
             if (rule.IsMatch(number))
             {
