@@ -48,5 +48,28 @@ namespace FizzBuzzLibTests
             var sentence = _fizzBuzz.GetSentenceFor(15);
             sentence.Should().Be("FizzBuzz");
         }
+
+        [Test]
+        public void ApplyCustomRule()
+        {
+            var rules = new List<IRule>();
+            rules.Add(new CustomRule());
+            var fizzBuzz = new FizzBuzz(rules);
+
+            var sentence = fizzBuzz.GetSentenceFor(27772);
+            sentence.Should().Be("Lucky");
+        }
+
+        [Test]
+        public void IgnoreCustomRule()
+        {
+            var rules = new List<IRule>();
+            rules.Add(new CustomRule());
+            var fizzBuzz = new FizzBuzz(rules);
+
+            var sentence = fizzBuzz.GetSentenceFor(1787);
+            sentence.Should().Be("1787");
+        }
+
     }
 }
