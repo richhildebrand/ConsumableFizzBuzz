@@ -3,12 +3,12 @@ using System.Linq;
 
 namespace FizzBuzzLib
 {
-    public class Rule : IRule
+    public class IsEvenlyDivisible : IRule
     {
         private readonly int _denominator;
         private readonly string _result;
 
-        public Rule(int denominator, string result)
+        public IsEvenlyDivisible(int denominator, string result)
         {
             _denominator = denominator;
             _result = result;

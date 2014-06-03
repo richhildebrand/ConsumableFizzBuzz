@@ -13,8 +13,8 @@ namespace CustomerConsole
         public static void Main(string[] args)
         {
             var rules = new List<IRule>();
-            rules.Add(new Rule(3, "Fizz"));
-            rules.Add(new Rule(5, "Buzz"));
+            rules.Add(new IsEvenlyDivisible(3, "Fizz"));
+            rules.Add(new IsEvenlyDivisible(5, "Buzz"));
             rules.Add(new NonStandardCustomerRule());
 
             _fizzBuzz = new FizzBuzz(rules);

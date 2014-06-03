@@ -16,8 +16,8 @@ namespace FizzBuzzLibTests
         public void SetUp()
         {
             var rules = new List<IRule>();
-            rules.Add(new Rule(3, "Fizz"));
-            rules.Add(new Rule(5, "Buzz"));
+            rules.Add(new IsEvenlyDivisible(3, "Fizz"));
+            rules.Add(new IsEvenlyDivisible(5, "Buzz"));
             _fizzBuzz = new FizzBuzz(rules);
         }
 
