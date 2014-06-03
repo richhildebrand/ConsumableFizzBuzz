@@ -1,58 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FizzBuzzLib
 {
     public class FizzBuzz
     {
+        private List<Rule> _rules;
+
+        public FizzBuzz(List<Rule> rules)
+        {
+            _rules = rules;
+        }
+
         public string GetSentenceFor(int number)
         {
             var sentence = "";
-            sentence += GetFizz(number);
-            sentence += GetBuzz(number);
-            sentence += GetNumber(number, sentence);
 
-            return sentence;
+            foreach (var rule in _rules)
+            {
+                sentence += ApplyRule(rule, number);
+            }
+
+            return GetNumberOrSentence(sentence, number);
         }
 
-        private string GetNumber(int number, string sentence)
+        private string ApplyRule(Rule rule, int number)
+        {
+            if (rule.IsMatch(number))
+            {
+                return rule.GetResult();
+            }
+
+            return "";
+        }
+
+        private string GetNumberOrSentence(string sentence, int number)
         {
             if (sentence == "")
             {
                 return number.ToString();
             }
 
-            return "";
-        }
-  
-        private string GetFizz(int number)
-        {
-            if (IsDivisibleByThree(number))
-            {
-                return "Fizz";
-            }
-
-            return "";
-        }
-
-        private string GetBuzz(int number)
-        {
-            if (IsDivisibleByFive(number))
-            {
-                return "Buzz";
-            }
-
-            return "";
-        }
-
-        private bool IsDivisibleByThree(int number)
-        {
-            return (number % 3) == 0;
-        }
-
-        private bool IsDivisibleByFive(int number)
-        {
-            return (number % 5) == 0;
+            return sentence;
         }
     }
 }

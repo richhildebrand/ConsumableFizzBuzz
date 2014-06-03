@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FizzBuzzLib;
 using FluentAssertions;
@@ -14,7 +15,10 @@ namespace FizzBuzzLibTests
         [SetUp]
         public void SetUp()
         {
-            _fizzBuzz = new FizzBuzz();
+            var rules = new List<Rule>();
+            rules.Add(new Rule(3, "Fizz"));
+            rules.Add(new Rule(5, "Buzz"));
+            _fizzBuzz = new FizzBuzz(rules);
         }
 
         [Test]
